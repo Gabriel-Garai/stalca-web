@@ -8,18 +8,18 @@
 </head>
 <body>
 
-    <!-- Cabeçalho -->
     <header class="site-header">
         <div class="container header-container">
             <div class="logo">
                 <h1>Stalca</h1>
+                <span>Administradora</span>
             </div>
             <nav class="nav-menu">
                 <a href="index.html" class="active">Home</a>
+                <a href="sobre.html">A Stalca</a>
                 <a href="servicos.html">Serviços</a>
                 <a href="contato.html">Contato</a>
             </nav>
-            <!-- Widget de Clima Fixo no Cabeçalho -->
             <div id="weather-widget" class="weather-widget">
                 <span id="clima-curitiba">Curitiba: Carregando...</span> | 
                 <span id="clima-matinhos">Matinhos: Carregando...</span>
@@ -27,25 +27,64 @@
         </div>
     </header>
 
-    <!-- Seção Banner Principal (Espaço Estratégico para Imagem) -->
     <section class="hero-banner">
         <div class="container hero-content">
             <div class="hero-text">
-                <h2>Gestão Condominial Moderna e Transparente</h2>
-                <p>Renove a administração do seu condomínio com eficiência, segurança e proximidade.</p>
-                <a href="contato.html" class="btn-primary">Fale Conosco</a>
+                <span class="badge-pill">Tradição desde 1989</span>
+                <h2>Gestão Condominial Moderna, Humana e Descomplicada</h2>
+                <p>Unimos mais de 35 anos de solidez jurídica e financeira com inovação digital para facilitar o dia a dia de síndicos, conselheiros e moradores em Curitiba e no Litoral.</p>
+                <div class="hero-buttons">
+                    <a href="https://wa.me/5541999079979" target="_blank" class="btn-primary">Falar via WhatsApp</a>
+                    <a href="sobre.html" class="btn-secondary">Nossa História</a>
+                </div>
             </div>
-            <!-- Placeholder Estratégico para Imagem (Sem imagens agora, mas estruturado) -->
-            <div class="image-placeholder hero-image-placeholder">
-                <span>[Espaço Estratégico para Imagem do Banner / Hero]</span>
+
+            <!-- Carrossel Interativo em Loop -->
+            <div class="home-carousel-box">
+                <h4>✨ Você sabia sobre a Stalca?</h4>
+                <div class="carousel-slide active">
+                    <p>Fundada em 1989 pelo idealizador Mendel Levy, mantemos o mesmo CNPJ ativo e a mesma solidez jurídica no mercado.</p>
+                </div>
+                <div class="carousel-slide">
+                    <p>Nossa sede histórica fica no coração de Curitiba, na tradicional Praça Zacarias, nº 58 (Conjunto 801).</p>
+                </div>
+                <div class="carousel-slide">
+                    <p>Desenvolvemos logística especializada para atender com excelência tanto Curitiba quanto o Litoral do Paraná.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Rodapé -->
+    <section class="features-section">
+        <div class="container">
+            <div class="section-title">
+                <h3>Por que escolher a Stalca?</h3>
+                <p>O que síndicos e conselheiros apontam como nossos maiores diferenciais</p>
+            </div>
+            <div class="features-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 25px;">
+                <div class="curiosity-card">
+                    <h4>Método Humanizado</h4>
+                    <p>Empatia e mediação inteligente de conflitos cotidianos para manter a harmonia no condomínio.</p>
+                </div>
+                <div class="curiosity-card">
+                    <h4>Suporte a Novos Síndicos</h4>
+                    <p>Orientação diária e detalhada que facilita o trabalho de gestores iniciantes.</p>
+                </div>
+                <div class="curiosity-card">
+                    <h4>Especialização no Litoral</h4>
+                    <p>Estrutura pronta para gerenciar as demandas sazonais e logísticas de Caiobá e Matinhos.</p>
+                </div>
+                <div class="curiosity-card">
+                    <h4>Transparência Digital</h4>
+                    <p>Prestação de contas em tempo real e emissão de boletos direto na palma da mão.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <footer class="site-footer">
         <div class="container">
-            <p>&copy; 2026 Stalca Administradora de Condomínios. Todos os direitos reservados.</p>
+            <p>&copy; 2026 STALCA Prestadora de Serviços para Condomínios Ltda. Todos os direitos reservados.</p>
         </div>
     </footer>
 
