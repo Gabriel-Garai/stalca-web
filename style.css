@@ -1,0 +1,147 @@
+:root {
+    --primary-blue: #0b2545;
+    --accent-blue: #134074;
+    --bg-offwhite: #f4f1ea; /* Tom areia / off-white */
+    --pure-white: #ffffff;
+    --text-color: #333333;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-offwhite);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Cabeçalho */
+.site-header {
+    background-color: var(--primary-blue);
+    color: var(--pure-white);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.logo h1 {
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-menu a {
+    color: var(--pure-white);
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.2s;
+}
+
+.nav-menu a:hover, .nav-menu a.active {
+    opacity: 0.7;
+    border-bottom: 2px solid var(--pure-white);
+}
+
+/* Widget de Clima no Cabeçalho */
+.weather-widget {
+    font-size: 0.85rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 6px 12px;
+    border-radius: 4px;
+}
+
+/* Seção Hero Banner */
+.hero-banner {
+    padding: 80px 0;
+    background-color: var(--pure-white);
+}
+
+.hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.hero-text {
+    flex: 1;
+    min-width: 300px;
+}
+
+.hero-text h2 {
+    font-size: 2.5rem;
+    color: var(--primary-blue);
+    margin-bottom: 20px;
+}
+
+.hero-text p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    color: #555;
+}
+
+.btn-primary {
+    display: inline-block;
+    background-color: var(--accent-blue);
+    color: var(--pure-white);
+    padding: 12px 25px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-blue);
+}
+
+/* Placeholder de Imagem Estratégico */
+.image-placeholder {
+    flex: 1;
+    min-width: 300px;
+    height: 300px;
+    border: 2px dashed #b0a89d;
+    background-color: #eae5dc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    color: #776e62;
+    font-weight: 500;
+    border-radius: 8px;
+}
+
+/* Rodapé */
+.site-footer {
+    background-color: var(--primary-blue);
+    color: var(--pure-white);
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+    font-size: 0.9rem;
+}
