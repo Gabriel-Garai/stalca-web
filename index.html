@@ -4,10 +4,503 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stalca Administradora de Condomínios</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #0A192F;
+            --accent-blue: #1E3A8A;
+            --gradient-blue: linear-gradient(135deg, #0A192F 0%, #1E3A8A 100%);
+            --bg-offwhite: #F8F9FA;
+            --pure-white: #FFFFFF;
+            --text-color: #334155;
+            --border-color: #E2E8F0;
+            --whatsapp-green: #10B981;
+            --accent-sand: #F1F5F9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-offwhite);
+            color: var(--text-color);
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .site-header {
+            background: var(--gradient-blue);
+            color: var(--pure-white);
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: -4px;
+        }
+
+        .logo span {
+            font-size: 0.7rem;
+            opacity: 0.75;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .nav-menu a {
+            color: var(--pure-white);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .nav-menu a:hover {
+            color: #60A5FA;
+        }
+
+        .btn-nav-sgc {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+        }
+
+        .btn-nav-sgc:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            padding: 80px 0 60px;
+            background: linear-gradient(180deg, #FFFFFF 0%, var(--bg-offwhite) 100%);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .badge-pill {
+            display: inline-block;
+            background: #E0E7FF;
+            color: var(--accent-blue);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-content h2 {
+            font-size: 2.8rem;
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+            line-height: 1.2;
+            font-weight: 800;
+        }
+
+        .hero-content p {
+            font-size: 1.15rem;
+            margin-bottom: 35px;
+            color: #64748B;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--whatsapp-green);
+            color: var(--pure-white);
+            padding: 14px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary-blue);
+            border: 2px solid #CBD5E1;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.2s;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary-blue);
+            background: var(--accent-sand);
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 50px;
+        }
+
+        .section-header h3 {
+            font-size: 2.2rem;
+            color: var(--primary-blue);
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .section-header p {
+            color: #64748B;
+            font-size: 1.05rem;
+        }
+
+        /* Por que escolher a Stalca */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .feature-card {
+            background: var(--pure-white);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+            border-top: 4px solid var(--accent-blue);
+        }
+
+        .feature-card h4 {
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .feature-card p {
+            color: #64748B;
+            font-size: 0.95rem;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--pure-white);
+            border-radius: 12px;
+            padding: 35px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+            border-left: 5px solid var(--accent-blue);
+        }
+
+        .service-card h4 {
+            color: var(--primary-blue);
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .service-card ul {
+            list-style-type: none;
+        }
+
+        .service-card ul li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 10px;
+            color: #64748B;
+            font-size: 0.95rem;
+        }
+
+        .service-card ul li::before {
+            content: "•";
+            color: var(--accent-blue);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Administradora x Contabilidade */
+        .comparison-wrapper {
+            background: var(--pure-white);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .comparison-col {
+            background: var(--bg-offwhite);
+            padding: 30px;
+            border-radius: 10px;
+            border-top: 4px solid var(--accent-blue);
+        }
+
+        .comparison-col h4 {
+            color: var(--primary-blue);
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .comparison-col p {
+            color: #64748B;
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+        }
+
+        /* FAQ Accordion Styles */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .accordion-item {
+            background: var(--pure-white);
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            transition: border-color 0.2s;
+        }
+
+        .accordion-item:hover {
+            border-color: var(--accent-blue);
+        }
+
+        .accordion-header {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 20px 25px;
+            text-align: left;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .accordion-icon {
+            font-size: 1rem;
+            transition: transform 0.3s ease;
+            color: var(--accent-blue);
+            flex-shrink: 0;
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease-in-out, padding 0.35s ease-in-out;
+            padding: 0 25px;
+            color: #64748B;
+            font-size: 0.95rem;
+        }
+
+        /* Active state for accordion */
+        .accordion-item.active .accordion-content {
+            max-height: 300px; /* Suficiente para a maioria das respostas */
+            padding: 0 25px 20px 25px;
+        }
+
+        .accordion-item.active .accordion-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Map & About details */
+        .map-wrapper {
+            background: var(--pure-white);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .map-details {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .map-frame-box {
+            flex: 1.5;
+            min-width: 300px;
+            height: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .map-frame-box iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .btn-maps {
+            display: inline-block;
+            margin-top: 20px;
+            background: #EA4335;
+            color: white;
+            padding: 12px 22px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: opacity 0.2s;
+        }
+
+        .btn-maps:hover {
+            opacity: 0.9;
+        }
+
+        /* Contact & CTA Section */
+        .contact-content {
+            background: var(--pure-white);
+            padding: 45px;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-content h3 {
+            color: var(--primary-blue);
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .contact-content p {
+            color: #64748B;
+            margin-bottom: 30px;
+            font-size: 1.05rem;
+        }
+
+        .contact-actions {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .departments-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+            text-align: left;
+            margin-top: 30px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 30px;
+        }
+
+        .dept-card {
+            background: var(--bg-offwhite);
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .dept-card h5 {
+            color: var(--primary-blue);
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        .dept-card a {
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-size: 0.85rem;
+            word-break: break-all;
+        }
+
+        .dept-card a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .site-footer {
+            background: var(--primary-blue);
+            color: var(--pure-white);
+            text-align: center;
+            padding: 40px 0;
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
 <body>
 
+    <!-- Header -->
     <header class="site-header">
         <div class="container header-container">
             <div class="logo">
@@ -15,79 +508,305 @@
                 <span>Administradora</span>
             </div>
             <nav class="nav-menu">
-                <a href="index.html" class="active">Home</a>
-                <a href="sobre.html">A Stalca</a>
-                <a href="servicos.html">Serviços</a>
-                <a href="contato.html">Contato</a>
+                <a href="#inicio">Início</a>
+                <a href="#sobre">A Stalca</a>
+                <a href="#servicos">Serviços</a>
+                <a href="#faq">FAQ</a>
+                <a href="#contato">Contato</a>
+                <a href="https://www.sgconline.com.br/" target="_blank" class="btn-nav-sgc">SGConline ↗</a>
             </nav>
-            <div id="weather-widget" class="weather-widget">
-                <span id="clima-curitiba">Curitiba: Carregando...</span> | 
-                <span id="clima-matinhos">Matinhos: Carregando...</span>
-            </div>
         </div>
     </header>
 
-    <section class="hero-banner">
-        <div class="container hero-content">
-            <div class="hero-text">
-                <span class="badge-pill">Tradição desde 1989</span>
-                <h2>Gestão Condominial Moderna, Humana e Descomplicada</h2>
-                <p>Unimos mais de 35 anos de solidez jurídica e financeira com inovação digital para facilitar o dia a dia de síndicos, conselheiros e moradores em Curitiba e no Litoral.</p>
-                <div class="hero-buttons">
-                    <a href="https://wa.me/5541999079979" target="_blank" class="btn-primary">Falar via WhatsApp</a>
-                    <a href="sobre.html" class="btn-secondary">Nossa História</a>
-                </div>
-            </div>
-
-            <!-- Carrossel Interativo em Loop -->
-            <div class="home-carousel-box">
-                <h4>✨ Você sabia sobre a Stalca?</h4>
-                <div class="carousel-slide active">
-                    <p>Fundada em 1989 pelo idealizador Mendel Levy, mantemos o mesmo CNPJ ativo e a mesma solidez jurídica no mercado.</p>
-                </div>
-                <div class="carousel-slide">
-                    <p>Nossa sede histórica fica no coração de Curitiba, na tradicional Praça Zacarias, nº 58 (Conjunto 801).</p>
-                </div>
-                <div class="carousel-slide">
-                    <p>Desenvolvemos logística especializada para atender com excelência tanto Curitiba quanto o Litoral do Paraná.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="features-section">
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-section">
         <div class="container">
-            <div class="section-title">
-                <h3>Por que escolher a Stalca?</h3>
-                <p>O que síndicos e conselheiros apontam como nossos maiores diferenciais</p>
-            </div>
-            <div class="features-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 25px;">
-                <div class="curiosity-card">
-                    <h4>Método Humanizado</h4>
-                    <p>Empatia e mediação inteligente de conflitos cotidianos para manter a harmonia no condomínio.</p>
-                </div>
-                <div class="curiosity-card">
-                    <h4>Suporte a Novos Síndicos</h4>
-                    <p>Orientação diária e detalhada que facilita o trabalho de gestores iniciantes.</p>
-                </div>
-                <div class="curiosity-card">
-                    <h4>Especialização no Litoral</h4>
-                    <p>Estrutura pronta para gerenciar as demandas sazonais e logísticas de Caiobá e Matinhos.</p>
-                </div>
-                <div class="curiosity-card">
-                    <h4>Transparência Digital</h4>
-                    <p>Prestação de contas em tempo real e emissão de boletos direto na palma da mão.</p>
+            <div class="hero-content">
+                <span class="badge-pill">Tradição desde 1989</span>
+                <h2>Administração de Condomínios com Segurança e Eficiência</h2>
+                <p>A Stalca apoia síndicos e conselhos na gestão financeira, administrativa, operacional e de pessoal em Curitiba e litoral.</p>
+                <div class="hero-buttons">
+                    <a href="https://wa.me/5541999079979" target="_blank" class="btn-primary">
+                        💬 Fale Conosco no WhatsApp
+                    </a>
+                    <a href="#sobre" class="btn-secondary">Conheça a Stalca</a>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Por que escolher a Stalca? -->
+    <section id="sobre" style="background: #FFFFFF;">
+        <div class="container">
+            <div class="section-header">
+                <h3>Por que escolher a Stalca?</h3>
+                <p>Nossa estrutura é voltada para trazer tranquilidade e organização para o seu condomínio.</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h4>+35 anos de experiência</h4>
+                    <p>Trajetória sólida no mercado de administração de condomínios desde 1989, oferecendo segurança institucional.</p>
+                </div>
+                <div class="feature-card">
+                    <h4>Gestão transparente</h4>
+                    <p>Processos claros, demonstrativos financeiros organizados e acesso facilitado a informações e documentos.</p>
+                </div>
+                <div class="feature-card">
+                    <h4>Atendimento próximo</h4>
+                    <p>Canais diretos de comunicação e equipe dedicada a entender e resolver as demandas do dia a dia condominial.</p>
+                </div>
+                <div class="feature-card">
+                    <h4>Suporte ao síndico</h4>
+                    <p>Orientação especializada para auxiliar o síndico na tomada de decisões e no cumprimento das obrigações legais.</p>
+                </div>
+            </div>
+
+            <!-- História reduzida e Endereço -->
+            <div style="margin-top: 60px;">
+                <div class="map-wrapper">
+                    <div class="map-details">
+                        <h4 style="color: var(--primary-blue); font-size: 1.5rem; margin-bottom: 12px; font-weight: 800;">Nossa Localização</h4>
+                        <p style="margin-bottom: 15px;">Fundada em 1989, a Stalca mantém sua sede centralizada na Praça Zacarias, nº 58 (Conjunto 801), Centro, Curitiba - PR, prestando atendimento estruturado para Curitiba e litoral.</p>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Praca+Zacarias+58+Curitiba" target="_blank" class="btn-maps">Ver no Google Maps 🗺️</a>
+                    </div>
+                    <div class="map-frame-box">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3609.9575837073286!2d-49.27546!3d-25.4312!2m3!1f0!2f0!3f0!3m2!1m1!2sPra%C3%A7a%20Zacarias%2C%2058%20-%20Centro%2C%20Curitiba%20-%20PR!5e0!3m2!1spt-BR!2sbr!4v1600000000000" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Serviços Ampliados -->
+    <section id="servicos">
+        <div class="container">
+            <div class="section-header">
+                <h3>Nossos Serviços</h3>
+                <p>Soluções completas divididas por áreas de atuação para manter o condomínio em pleno funcionamento.</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <h4>📊 Gestão Financeira</h4>
+                    <ul>
+                        <li>Emissão e controle de boletos</li>
+                        <li>Gestão rigorosa da inadimplência</li>
+                        <li>Controle de contas a pagar e receber</li>
+                        <li>Elaboração de orçamento anual</li>
+                        <li>Prestação de contas mensal detalhada</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <h4>👥 Recursos Humanos (RH)</h4>
+                    <ul>
+                        <li>Processamento de folha de pagamento</li>
+                        <li>Controle de férias e 13º salário</li>
+                        <li>Rotinas de admissões e demissões</li>
+                        <li>Gestão de encargos sociais e trabalhistas</li>
+                        <li>Envio de obrigações via eSocial</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <h4>🏢 Administração Operacional</h4>
+                    <ul>
+                        <li>Atendimento humanizado a moradores</li>
+                        <li>Organização e guarda de documentos</li>
+                        <li>Suporte na realização de assembleias</li>
+                        <li>Gestão e cadastro de fornecedores</li>
+                        <li>Cotações e controle de manutenções</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Administradora x Contabilidade -->
+            <div style="margin-top: 60px;">
+                <div class="comparison-wrapper">
+                    <div class="section-header" style="margin-bottom: 30px;">
+                        <h3>Administradora x Contabilidade</h3>
+                        <p>Entenda por que a administradora atua muito além da contabilidade tradicional.</p>
+                    </div>
+                    <p style="text-align: center; color: #64748B; margin-bottom: 25px;">Enquanto a contabilidade foca nas obrigações fiscais e registros contábeis formais, a administradora de condomínios gerencia o dia a dia integral do edifício, dando suporte direto ao síndico em todas as frentes:</p>
+                    <div class="comparison-grid">
+                        <div class="comparison-col">
+                            <h4>Papel da Contabilidade</h4>
+                            <p>• Escrituração contábil e balanços fiscais.</p>
+                            <p>• Apuração de impostos e entrega de obrigações acessórias gerais.</p>
+                        </div>
+                        <div class="comparison-col">
+                            <h4>Atuação da Administradora Stalca</h4>
+                            <p>• Gestão financeira operacional (boletos, fluxo de caixa e cobrança).</p>
+                            <p>• Rotinas de pessoal (folha, encargos e eSocial).</p>
+                            <p>• Suporte administrativo, atendimento a condôminos, apoio em assembleias e cotações.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Accordion -->
+    <section id="faq" style="background: #FFFFFF;">
+        <div class="container">
+            <div class="section-header">
+                <h3>Perguntas Frequentes (FAQ)</h3>
+                <p>Tire suas dúvidas sobre o funcionamento dos nossos serviços e a rotina condominial.</p>
+            </div>
+
+            <div class="faq-container">
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        O que faz uma administradora de condomínios?
+                        <span class="accordion-icon">▾</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>A administradora auxilia o síndico na execução das rotinas financeiras, administrativas, de recursos humanos e operacionais, assegurando a organização e a transparência na gestão do condomínio.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        Qual a diferença entre uma administradora e uma contabilidade?
+                        <span class="accordion-icon">▾</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>A contabilidade cuida das obrigações fiscais e registros contábeis. A administradora gerencia o cotidiano completo do condomínio, incluindo boletos, cobrança de inadimplência, folha de pagamento, suporte a assembleias e cotações.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        O síndico deixa de ser responsável ao contratar uma administradora?
+                        <span class="accordion-icon">▾</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Não. O síndico continua sendo o representante legal do condomínio perante a lei e os órgãos competentes. A administradora atua como uma parceira estratégica e prestadora de serviços especializada que oferece todo o suporte necessário para facilitar sua gestão.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        A Stalca cuida de boletos e inadimplência?
+                        <span class="accordion-icon">▾</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Sim, realizamos a emissão e envio de boletos mensais aos condôminos, além de gerenciar os recebimentos e realizar o acompanhamento e controle rigoroso da inadimplência.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        A Stalca administra funcionários do condomínio?
+                        <span class="accordion-icon">▾</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Sim. Cuidamos de toda a rotina de recursos humanos dos colaboradores do condomínio, abrangendo folha de pagamento, férias, 13º salário, admissões, rescisões, encargos e transmissão de dados ao eSocial.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        A Stalca atende condomínios no litoral?
+                        <span class="accordion-icon">▾</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Sim, possuímos estrutura e logística planejadas para atender com excelência condomínios localizados tanto em Curitiba quanto no litoral paranaense.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        Como funciona a contratação da Stalca?
+                        <span class="accordion-icon">▾</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>A contratação inicia-se com o levantamento das necessidades do condomínio (número de unidades, funcionários e serviços desejados). A partir disso, apresentamos uma proposta sob medida para alinhamento e início das operações.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        Como solicitar uma proposta?
+                        <span class="accordion-icon">▾</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Você pode solicitar uma proposta personalizada entrando em contato diretamente com a nossa equipe pelo WhatsApp (41) 99907-9979 ou pelos nossos canais de atendimento por e-mail.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato & CTA Final -->
+    <section id="contato">
+        <div class="container">
+            <div class="contact-content">
+                <h3>Está procurando uma administradora para seu condomínio?</h3>
+                <p>Entre em contato conosco e descubra como podemos simplificar a gestão do seu edifício com segurança e transparência.</p>
+                
+                <div class="contact-actions">
+                    <a href="https://wa.me/5541999079979" target="_blank" class="btn-primary">
+                        💬 WhatsApp: (41) 99907-9979
+                    </a>
+                    <a href="tel:4132333334" class="btn-secondary" style="border-color: var(--primary-blue); color: var(--primary-blue);">
+                        📞 Telefone Fixo: (41) 3233-3334
+                    </a>
+                </div>
+
+                <div style="font-size: 0.9rem; color: #64748B; margin-bottom: 10px;">
+                    <strong>Horário de Atendimento:</strong> Segunda a Quinta das 08h30 às 17h30 | Sextas até as 17h.
+                </div>
+                <div style="font-size: 0.9rem; color: #64748B;">
+                    <strong>Instagram:</strong> @stalca.adm
+                </div>
+
+                <!-- Departamentos -->
+                <div class="departments-grid">
+                    <div class="dept-card">
+                        <h5>Geral / Caiobá</h5>
+                        <a href="mailto:admcaioba@gmail.com">admcaioba@gmail.com</a>
+                    </div>
+                    <div class="dept-card">
+                        <h5>Boletos</h5>
+                        <a href="mailto:admcaiobaboletos@gmail.com">admcaiobaboletos@gmail.com</a>
+                    </div>
+                    <div class="dept-card">
+                        <h5>Contas a Pagar</h5>
+                        <a href="mailto:contasapagaradmcaioba@gmail.com">contasapagaradmcaioba@gmail.com</a>
+                    </div>
+                    <div class="dept-card">
+                        <h5>Recursos Humanos (RH)</h5>
+                        <a href="mailto:rhadmcaioba@gmail.com">rhadmcaioba@gmail.com</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer class="site-footer">
         <div class="container">
             <p>&copy; 2026 STALCA Prestadora de Serviços para Condomínios Ltda. Todos os direitos reservados.</p>
         </div>
     </footer>
 
-    <script src="js/script.js"></script>
+    <!-- JavaScript para o funcionamento do Accordion -->
+    <script>
+        document.querySelectorAll('.accordion-header').forEach(button => {
+            button.addEventListener('click', () => {
+                const currentItem = button.parentElement;
+                
+                // Fecha os outros itens abertos (opcional, deixa a seção mais limpa)
+                document.querySelectorAll('.accordion-item').forEach(item => {
+                    if (item !== currentItem) {
+                        item.classList.remove('active');
+                    }
+                });
+
+                // Alterna o estado do item atual
+                currentItem.classList.toggle('active');
+            });
+        });
+    </script>
 </body>
 </html>
